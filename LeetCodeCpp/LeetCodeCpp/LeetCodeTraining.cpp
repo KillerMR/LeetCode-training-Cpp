@@ -7,22 +7,30 @@ using std::cin;
 
 class Solution {
 public:
-    int sum(int num1, int num2) {
-        return num1 + num2;
+    vector<int> runningSum(vector<int>& nums) {
+        vector<int> res;
+        for (int i = 0; i < nums.size(); i++) {
+            res.push_back(sum(nums, i));
+        }
+        return res;
+    }
+    int sum(vector<int> num, int n) {
+        int res = 0;
+        for (int i = 0; i <= n; i++) {
+            res += num[i];
+        }
+        return res;
     }
 };
 
 int main() {
-    int num1 = 5;
-    int num2 = 5;
+    vector<int> nums = { 1,2,3,4 };
     Solution sol;
-    cout << sol.sum(num1, num2);
-    return 0;
+    
     // Для виведення векторів
-    /*vector<int> nums = { 0, 2, 1, 5, 3, 4 };
-    Solution sol = Solution();
-    vector<int> res = sol.buildArray(nums);
+    vector<int> res = sol.runningSum(nums);
     for (int i = 0; i < res.size(); i++) {
         cout << res[i] << std::endl;
-    }*/
+    }
+    return 0;
 }
