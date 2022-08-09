@@ -1,36 +1,35 @@
 #include <iostream>
 #include <vector>
+#include <string>
 
 using std::vector;
 using std::cout;
 using std::cin;
+using std::string;
 
 class Solution {
 public:
-    vector<int> runningSum(vector<int>& nums) {
-        vector<int> res;
-        for (int i = 0; i < nums.size(); i++) {
-            res.push_back(sum(nums, i));
-        }
-        return res;
-    }
-    int sum(vector<int> num, int n) {
-        int res = 0;
-        for (int i = 0; i <= n; i++) {
-            res += num[i];
+    string defangIPaddr(string address) {
+        string res;
+        for (int i = 0; i < address.length(); i++) {
+            if (address[i] != '.')
+                res += address[i];
+            else
+                res += "[.]";
         }
         return res;
     }
 };
 
 int main() {
-    vector<int> nums = { 1,2,3,4 };
+    string s = "1.1.1.1";
     Solution sol;
     
     // Для виведення векторів
-    vector<int> res = sol.runningSum(nums);
-    for (int i = 0; i < res.size(); i++) {
+    string res = sol.defangIPaddr(s);
+    cout << res << std::endl;
+    /*for (int i = 0; i < res.size(); i++) {
         cout << res[i] << std::endl;
-    }
+    }*/
     return 0;
 }
